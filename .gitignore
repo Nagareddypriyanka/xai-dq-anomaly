@@ -1,0 +1,15 @@
+# Data files are large and come from Zenodo: never commit them
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
