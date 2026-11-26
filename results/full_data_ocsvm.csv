@@ -1,0 +1,2 @@
+features,model,type,precision,recall,F1,PR-AUC,seconds,wall_minutes
+with checks,One-Class SVM,unsupervised,0.6942401960784313,0.6938150642988365,0.6940275650842267,0.6450138359133404,5897.926691770554,98.31182006597518
