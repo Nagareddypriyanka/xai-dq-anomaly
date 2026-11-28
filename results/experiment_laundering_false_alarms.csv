@@ -1,0 +1,11 @@
+features,model,laundering flagged (mean),SD
+raw only,Isolation Forest,0.32,0.134
+raw only,LOF,0.528,0.136
+raw only,One-Class SVM,0.326,0.063
+raw only,Random Forest,0.254,0.21
+raw only,XGBoost,0.586,0.361
+with checks,Isolation Forest,0.382,0.138
+with checks,LOF,0.575,0.193
+with checks,One-Class SVM,0.21,0.028
+with checks,Random Forest,0.041,0.0
+with checks,XGBoost,0.041,0.0
