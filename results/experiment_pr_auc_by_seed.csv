@@ -1,0 +1,31 @@
+features,model,error_rate,7,42,123,mean,range (max-min)
+raw only,Isolation Forest,0.01,0.011,0.011,0.011,0.011,0.0
+raw only,Isolation Forest,0.05,0.044,0.046,0.046,0.045,0.002
+raw only,Isolation Forest,0.1,0.094,0.094,0.092,0.093,0.002
+raw only,LOF,0.01,0.055,0.048,0.042,0.048,0.013
+raw only,LOF,0.05,0.143,0.132,0.129,0.135,0.014
+raw only,LOF,0.1,0.201,0.202,0.198,0.2,0.004
+raw only,One-Class SVM,0.01,0.031,0.028,0.024,0.028,0.007
+raw only,One-Class SVM,0.05,0.081,0.073,0.087,0.08,0.014
+raw only,One-Class SVM,0.1,0.129,0.131,0.137,0.132,0.008
+raw only,Random Forest,0.01,0.106,0.088,0.065,0.086,0.041
+raw only,Random Forest,0.05,0.245,0.238,0.244,0.242,0.007
+raw only,Random Forest,0.1,0.333,0.332,0.319,0.328,0.014
+raw only,XGBoost,0.01,0.105,0.075,0.076,0.085,0.03
+raw only,XGBoost,0.05,0.509,0.485,0.501,0.498,0.024
+raw only,XGBoost,0.1,0.613,0.629,0.615,0.619,0.016
+with checks,Isolation Forest,0.01,0.016,0.016,0.021,0.018,0.005
+with checks,Isolation Forest,0.05,0.103,0.091,0.101,0.098,0.012
+with checks,Isolation Forest,0.1,0.289,0.218,0.21,0.239,0.079
+with checks,LOF,0.01,0.372,0.25,0.388,0.337,0.138
+with checks,LOF,0.05,0.083,0.082,0.072,0.079,0.011
+with checks,LOF,0.1,0.143,0.146,0.139,0.143,0.007
+with checks,One-Class SVM,0.01,0.599,0.653,0.529,0.594,0.124
+with checks,One-Class SVM,0.05,0.66,0.609,0.654,0.641,0.051
+with checks,One-Class SVM,0.1,0.699,0.694,0.717,0.703,0.023
+with checks,Random Forest,0.01,0.999,1.0,1.0,1.0,0.001
+with checks,Random Forest,0.05,1.0,1.0,1.0,1.0,0.0
+with checks,Random Forest,0.1,1.0,1.0,1.0,1.0,0.0
+with checks,XGBoost,0.01,1.0,0.994,1.0,0.998,0.006
+with checks,XGBoost,0.05,1.0,1.0,1.0,1.0,0.0
+with checks,XGBoost,0.1,1.0,1.0,1.0,1.0,0.0
