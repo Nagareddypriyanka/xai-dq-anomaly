@@ -56,8 +56,9 @@ def build_features(df, ref):
         vocab = sorted(ref['valid'][c]) if c in CAT_COLS else sorted(d[c].dropna().unique())
         X = X.join(pd.get_dummies(pd.Categorical(d[c].where(d[c].isin(vocab)), categories=vocab), prefix=c).set_index(d.index).astype(int))
 
-    # 9. fill remaining numeric gaps with the median (the _missing flags keep the signal)
-    X = X.fillna(X.median(numeric_only=True))
+    # 9. remaining gaps (blanked numeric values) are left as NaN: they are filled with the median
+    #    INSIDE each model pipeline, fitted on the training split only (no test-set information).
+    #    The _missing flags keep the signal that a value was blank.
     return X, d['is_dq_anomaly'], d['issue_type']
 
 

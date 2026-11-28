@@ -28,15 +28,25 @@ def inject_numerical(df, rows, rng):
         df.loc[r, 'amount'] = df.loc[r, 'amount'] * {'x10': 10, 'x100': 100, 'negative': -1}[kind]
 
 
+def _swap(v, rng):
+    """Typo: two neighbouring letters swapped, e.g. 'Housing' -> 'Hosuing' (empty string if impossible)."""
+    pos = [i for i in range(len(v) - 1) if v[i] != v[i + 1]]
+    if not pos:
+        return ''
+    i = int(rng.choice(pos))
+    return v[:i] + v[i + 1] + v[i] + v[i + 2:]
+
+
 def _variant(v, rng):
-    """A spelling variant of a category value that is not in the valid list."""
-    options = [v.lower(), v.upper(), v + ' ', ' ' + v, v[:4]]
-    options = [o for o in options if o != v]
+    """A spelling variant of a category value that is not in the valid list:
+    case changes, extra spaces, truncation, or a letter-swap typo."""
+    options = [v.lower(), v.upper(), v + ' ', ' ' + v, v[:4], _swap(v, rng)]
+    options = [o for o in options if o and o != v]
     return rng.choice(options)
 
 
 def inject_categorical(df, rows, rng):
-    """Inconsistent category labels: 'TRANSFER' -> 'transfer', 'Food' -> 'FOOD', 'Housing' -> 'Hous', ..."""
+    """Inconsistent category labels: 'TRANSFER' -> 'transfer', 'Food' -> 'FOOD', 'Housing' -> 'Hous', 'Housing' -> 'Hosuing', ..."""
     for r in rows:
         col = rng.choice(CAT_COLS)
         df.loc[r, col] = _variant(df.loc[r, col], rng)

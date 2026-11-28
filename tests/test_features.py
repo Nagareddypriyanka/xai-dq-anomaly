@@ -27,10 +27,13 @@ def test_each_issue_fires_its_check(clean):
         assert check(X)[issue == name].all(), f'{name} not detected by its check'
 
 
-def test_features_complete_and_numeric(clean):
-    X, _, _ = build_features(make_dirty(clean, rate=0.3, seed=3), reference(clean))
-    assert X.isnull().sum().sum() == 0
+def test_features_numeric_and_gaps_only_where_blanked(clean):
+    """Blanked values stay NaN (imputed later inside each model pipeline); every NaN row is flagged as missing."""
+    X, _, issue = build_features(make_dirty(clean, rate=0.3, seed=3), reference(clean))
     assert all(pd.api.types.is_numeric_dtype(t) for t in X.dtypes)
+    has_gap = X.isnull().any(axis=1)
+    assert (issue[has_gap] == 'missing').all()
+    assert (X.loc[has_gap].filter(like='_missing').sum(axis=1) > 0).all()
 
 
 def test_invalid_spelling_gets_no_onehot_column(clean):

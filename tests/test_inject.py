@@ -41,3 +41,14 @@ def test_numerical_errors_change_only_amount(clean):
     ratio = dirty.loc[rows, 'amount'] / clean.loc[rows, 'amount']
     assert set(np.round(ratio, 6)) <= {10.0, 100.0, -1.0}
     assert dirty.loc[rows, 'newbalanceOrig'].equals(clean.loc[rows, 'newbalanceOrig'])
+
+
+def test_categorical_variants_are_never_valid_and_include_typos(clean):
+    import numpy as np
+    from src.inject import _swap, _variant
+    rng = np.random.default_rng(0)
+    assert _swap('Housing', np.random.default_rng(1)) != 'Housing'
+    assert sorted(_swap('Housing', np.random.default_rng(1))) == sorted('Housing')    # same letters, swapped
+    for v in ['Food', 'TRANSFER', 'BPAY', 'PayID']:
+        for _ in range(50):
+            assert _variant(v, rng) != v
