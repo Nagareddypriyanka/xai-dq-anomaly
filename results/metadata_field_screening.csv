@@ -1,0 +1,23 @@
+,non_null_%,unique,top_value_%,numeric,decision
+timestamp,100.0,49910,0.0,False,keep
+payment_method,100.0,3,40.1,False,keep
+merchant_info,0.0,0,,True,DROP: empty
+location.city,100.0,6,24.6,False,keep
+location.state,100.0,5,40.1,False,keep
+location.country,100.0,1,100.0,False,DROP: constant (1 value)
+location.postcode,100.0,4994,0.1,False,keep
+device_info.type,100.0,3,60.3,False,keep
+device_info.os,100.0,4,25.3,False,keep
+device_info.ip_address,100.0,50000,0.0,False,DROP: identifier-like text (50000 unique values)
+risk_indicators.amount_vs_average,100.0,50000,0.0,True,keep
+risk_indicators.customer_risk_score,100.0,28507,43.0,True,keep
+risk_indicators.category_risk,100.0,3,65.0,False,keep
+risk_indicators.risk_score,100.0,50000,0.0,True,DROP: undocumented composite score (judgment)
+risk_indicators.unusual_time,100.0,1,100.0,True,DROP: constant (1 value)
+risk_indicators.unusual_location,100.0,1,100.0,True,DROP: constant (1 value)
+network_metrics.sender_degree,100.0,53,13.4,True,keep
+network_metrics.sender_clustering,100.0,80,94.3,True,DROP: near-constant (94.3% one value)
+merchant_info.merchant_id,27.0,1000,0.2,False,DROP: sparse (27.0% filled)
+merchant_info.category,27.0,3,73.7,False,DROP: sparse (27.0% filled)
+merchant_info.risk_level,27.0,1,100.0,False,DROP: constant (1 value)
+merchant_info.avg_transaction,27.0,3,73.7,True,DROP: sparse (27.0% filled)
